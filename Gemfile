@@ -43,4 +43,8 @@ gem 'tiny_tds'
 group :development do
   gem 'seed_dump'
   # gem 'sqlite3'
+  gem 'annotate'
+  gem 'capistrano'
+  gem 'capistrano-ext'
+  gem 'rvm-capistrano'
 end
