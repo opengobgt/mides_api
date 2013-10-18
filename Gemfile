@@ -27,18 +27,15 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
+# Coneccion SQL Server
 gem 'tiny_tds'
+
+# Serializacion de datos api
+gem 'active_model_serializers'
+
+# Llaves compuestas
+gem 'composite_primary_keys', "~> 6.0.0"
+
 
 group :development do
   gem 'seed_dump'
@@ -47,4 +44,7 @@ group :development do
   gem 'capistrano'
   gem 'capistrano-ext'
   gem 'rvm-capistrano'
+
+  gem 'guard'
+  gem 'guard-rails'
 end

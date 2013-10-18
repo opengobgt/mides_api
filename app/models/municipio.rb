@@ -7,4 +7,18 @@ class Municipio < ActiveRecord::Base
   alias_attribute :nombre,          :MunDes
   alias_attribute :estado,          :MunEst # a saber
 
+  belongs_to :departamento, foreign_key: "DepCod"
+  has_many :comunidades, foreign_key: "MunCod"
+
 end
+
+# == Schema Information
+#
+# Table name: PRM_MUNICIPIO
+#
+#  DepCod :integer          not null
+#  MunCod :integer          not null, primary key
+#  MunDes :string(50)       not null
+#  MunEst :string(1)        not null
+#
+
