@@ -47,4 +47,6 @@ group :development do
 
   gem 'guard'
   gem 'guard-rails'
+
+  gem 'sqlite3'
 end
