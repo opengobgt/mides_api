@@ -16,6 +16,13 @@ class Escuela < ActiveRecord::Base
   alias_attribute :sector, :Sector
   alias_attribute :status, :Status
 
+  belongs_to :departamento, foreign_key: "DEPCODMIN"
+  belongs_to :municipio, foreign_key: "MUNCODMIN"
+  
+  has_many :asistencias, foreign_key: "Cod_UDI"
+
+  has_many :estudiantes, -> { distinct }, through: :asistencias
+
 end
 
 # == Schema Information

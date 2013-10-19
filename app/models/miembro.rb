@@ -8,12 +8,22 @@ class Miembro < ActiveRecord::Base
   alias_attribute :segundo_nombre, :MieNom2
   alias_attribute :primer_apellido, :MieApe1
   alias_attribute :segundo_apellido, :MieApe2
-  alias_attribute :fecha_nacimiento, :MieFechaNac
+  alias_attribute :fecha_nacimiento, :MieFecNac
   alias_attribute :genero, :MieSex
   alias_attribute :beneficio, :Beneficio
 
 
   belongs_to :familia, foreign_key: "HogCod"
+  has_many :asistencias, foreign_key: "MieCod"
+
+  def escuela
+    asistencias.last.escuela
+  end
+
+  def escuela_id
+    escuela.id
+  end
+
 
 end
 

@@ -9,6 +9,7 @@ class Municipio < ActiveRecord::Base
 
   belongs_to :departamento, foreign_key: "DepCod"
   has_many :comunidades, foreign_key: "MunCod"
+  has_many :escuelas, foreign_key: "MUNCODMIN"
 
 end
 

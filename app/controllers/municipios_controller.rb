@@ -12,4 +12,11 @@ class MunicipiosController < ApplicationController
       format.json { render json: @municipios}
     end
   end
+
+  def show
+    @municipio = Municipio.find(params[:id])
+    respond_to do |format|
+      format.json { render json: @municipio}
+    end
+  end
 end

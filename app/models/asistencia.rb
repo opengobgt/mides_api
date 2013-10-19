@@ -14,7 +14,7 @@ class Asistencia < ActiveRecord::Base
   alias_attribute :ano,        :Anio
 
   belongs_to :familia, foreign_key: "HogCod"
-  belongs_to :miembro, foreign_key: "MieCod"
+  belongs_to :estudiante, foreign_key: "MieCod", class_name: "Miembro"
   belongs_to :escuela, foreign_key: "Cod_UDI"
   
 end

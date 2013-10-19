@@ -3,8 +3,6 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
-# Use sqlserver as the database for Active Record
-gem 'activerecord-sqlserver-adapter', :git => 'https://github.com/arthrex/activerecord-sqlserver-adapter.git', :branch => 'master'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -27,14 +25,23 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-# Coneccion SQL Server
-gem 'tiny_tds'
 
 # Serializacion de datos api
 gem 'active_model_serializers'
 
 # Llaves compuestas
 gem 'composite_primary_keys', "~> 6.0.0"
+
+group :production do
+  # Servidor web + Apache 
+  gem 'unicorn'
+
+  # Coneccion SQL Server
+  gem 'tiny_tds'
+
+  # Use sqlserver as the database for Active Record
+  gem 'activerecord-sqlserver-adapter', :git => 'https://github.com/arthrex/activerecord-sqlserver-adapter.git', :branch => 'master'
+end
 
 
 group :development do
@@ -47,6 +54,9 @@ group :development do
 
   gem 'guard'
   gem 'guard-rails'
+  gem 'guard-bundler'
 
   gem 'sqlite3'
+
+  gem 'resty'
 end

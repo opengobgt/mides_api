@@ -4,10 +4,29 @@ MidesApi::Application.routes.draw do
 
   scope '/v1' do
     resources :departamentos, :only => [:index, :show] do
+
       resources :municipios, :only => [:index, :show] do
         resources :comunidades, :only => [:index, :show] 
+        resources :escuelas, :only => [:index, :show]
+      end
+
+      resources :escuelas, :only => [:index, :show]
+
+    end
+
+    scope '/educacion' do
+      resources :escuelas, :only => [:index, :show] do
+        resources :estudiantes, :only => [:index, :show]
+      end
+
+      resources :estudiantes, :only => [:show] do
+        resource :familia, :only => [:show]
+        resource :asistencias, :only => [:index]
       end
     end
+
+   
+    
   end
 
 
