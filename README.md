@@ -33,12 +33,12 @@ Se proveen dos namespaces para separar las operaciones sobre recursos relacionad
 
 *Salud*
 ```
-GET http://api.mides.gob.gt/educacion/
+GET http://api.mides.gob.gt/salud/
 ```
 
 *Educación*
 ```
-GET http://api.mides.gob.gt/salud/
+GET http://api.mides.gob.gt/educacion/
 ```
 
 ### Educacion
