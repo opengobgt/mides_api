@@ -2,7 +2,7 @@ class MunicipioSerializer < ActiveModel::Serializer
   attributes :id, :nombre, :url, :departamento, :comunidades, :escuelas
 
   def url
-    departamento_municipio_url(object.departamento_id, oject.id)
+    departamento_municipio_url(object.departamento_id, object.id)
   end
 
   def departamento
