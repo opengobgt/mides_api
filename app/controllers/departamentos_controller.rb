@@ -9,9 +9,13 @@ class DepartamentosController < ApplicationController
   end
 
   def show
+
     @departamento = Departamento.find(params[:id])
+
     respond_to do |format|
       format.json { render json: @departamento}
     end
   end
+
+
 end
