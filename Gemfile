@@ -29,6 +29,10 @@ end
 # Serializacion de datos api
 gem 'active_model_serializers'
 
+# Caching para catalogos estaticos
+# gem 'actionpack-action_caching'
+# gem 'actionpack-page_caching'
+
 # Llaves compuestas
 gem 'composite_primary_keys', "~> 6.0.0"
 
