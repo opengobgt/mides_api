@@ -19,6 +19,7 @@
 *.rbc
 .bundle
 .config
+.env
 coverage
 InstalledFiles
 lib/bundler/man

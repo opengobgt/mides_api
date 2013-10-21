@@ -1,0 +1,6 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: mides_api_development
+  pool: 5
+  password:

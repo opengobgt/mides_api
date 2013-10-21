@@ -29,6 +29,8 @@ end
 # Serializacion de datos api
 gem 'active_model_serializers'
 
+gem 'foreman'
+
 # Caching para catalogos estaticos
 # gem 'actionpack-action_caching'
 # gem 'actionpack-page_caching'
@@ -47,6 +49,8 @@ group :production do
   # gem 'activerecord-sqlserver-adapter', :git => 'https://github.com/arthrex/activerecord-sqlserver-adapter.git', :branch => 'master'
 
   gem 'pg'
+
+  gem 'rails_12factor'
 end
 
 
@@ -66,3 +70,5 @@ group :development do
 
   gem 'resty'
 end
+
+ruby "2.0.0"
