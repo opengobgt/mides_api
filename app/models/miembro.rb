@@ -17,7 +17,7 @@ class Miembro < ActiveRecord::Base
   has_many :asistencias, foreign_key: "MieCod"
 
   def escuela
-    asistencias.last.escuela
+    asistencias.order(:Fecha_Llenado).last.escuela
   end
 
   def escuela_id

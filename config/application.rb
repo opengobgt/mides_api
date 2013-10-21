@@ -21,5 +21,9 @@ module MidesApi
     # config.i18n.default_locale = :de
 
     # config.action_controller.page_cache_directory = "#{Rails.root.to_s}/public/deploy"
+
+    config.autoload_paths += %W(#{config.root}/lib)
+
+    require 'serializer_helpers'
   end
 end

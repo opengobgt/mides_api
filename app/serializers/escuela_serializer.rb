@@ -1,19 +1,31 @@
 class EscuelaSerializer < ActiveModel::Serializer
-  attributes :id, :nombre, :direccion, :telefono, :nivel, :jornada, :sector, :status, :url, :departamento, :municipio, :estudiantes
+  include SerializerHelpers 
+
+  attributes :id, :nombre, :direccion, :telefono, :nivel, :jornada, \
+  :sector, :status, :url, :departamento_url, :municipio_url, :estudiantes_url
+
+  has_one :departamento
+  has_one :municipio
+  has_many :estudiantes, serializer: EstudianteSerializer
+
+
+  def include_estudiantes?
+    if scope.params[:embed]
+      embed = scope.params[:embed].split(',') 
+      return true if embed.include?('estudiantes')
+    end
+  end
 
   def url
-    escuela_url(object.id)
+    scope.request.protocol + \
+    scope.request.host + \
+    (':' + scope.request.port.to_s rescue '') + \
+    escuela_path(object.id)
   end
 
-  def departamento
-    departamento_url(object.departamento_id)
-  end
-
-  def municipio
-    departamento_municipio_url(object.departamento_id, object.municipio_id)
-  end
-
-  def estudiantes
+  def estudiantes_url
     escuela_estudiantes_url(object.id)
   end
+
+
 end

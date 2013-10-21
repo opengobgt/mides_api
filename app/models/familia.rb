@@ -12,6 +12,14 @@ class Familia < ActiveRecord::Base
   belongs_to :departamento, foreign_key: "DepCod"
   belongs_to :municipio, foreign_key: "MunCod"
   belongs_to :comunidad, foreign_key: "LugPobCod"
+#  belongs_to :titular, foreign_key: "HogTitCod", class_name: Miembro
+
+  has_many :miembros, foreign_key: "HogCod"
+
+  def titular
+    titular_id
+  end
+
 
 end
 

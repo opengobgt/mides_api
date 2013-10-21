@@ -22,8 +22,10 @@ MidesApi::Application.routes.draw do
 
       resources :estudiantes, :only => [:show] do
         resource :familia, :only => [:show]
-        resource :asistencias, :only => [:index]
+        resources :asistencias, :only => [:index]
       end
+
+      resources :familias, :only => [:index, :show]
     end
 
    

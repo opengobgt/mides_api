@@ -5,16 +5,16 @@ class Asistencia < ActiveRecord::Base
 #  self.primary_keys = :HogCod, :MieCod, :Cod_UDI, :Fecha_Llenado
   
   alias_attribute :familia_id, :HogCod
-  alias_attribute :miembro_id, :MieCod
+  alias_attribute :miembro_id, :Miecod
   alias_attribute :escuela_id, :Cod_UDI
   alias_attribute :grado,      :Grado
   alias_attribute :fecha,      :Fecha_Llenado
   alias_attribute :usario_id,  :Usuario
-  alias_attribute :created_at, :Fecha_Digitacion
+  alias_attribute :fecha_digitacion, :Fecha_Digitacion
   alias_attribute :ano,        :Anio
 
   belongs_to :familia, foreign_key: "HogCod"
-  belongs_to :estudiante, foreign_key: "MieCod", class_name: "Miembro"
+  belongs_to :estudiante, foreign_key: "Miecod", class_name: "Miembro"
   belongs_to :escuela, foreign_key: "Cod_UDI"
   
 end

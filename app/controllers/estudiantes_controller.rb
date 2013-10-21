@@ -12,7 +12,7 @@ class EstudiantesController < ApplicationController
   def show
     @estudiante = Miembro.find(params[:id])
     respond_to do |format|
-      format.json { render json: @estudiante, each_serializer: EstudianteSerializer}
+      format.json { render json: @estudiante, serializer: EstudianteSerializer }
     end
   end
 
