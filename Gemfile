@@ -41,10 +41,12 @@ group :production do
   gem 'unicorn'
 
   # Coneccion SQL Server
-  gem 'tiny_tds'
+  # gem 'tiny_tds'
 
   # Use sqlserver as the database for Active Record
-  gem 'activerecord-sqlserver-adapter', :git => 'https://github.com/arthrex/activerecord-sqlserver-adapter.git', :branch => 'master'
+  # gem 'activerecord-sqlserver-adapter', :git => 'https://github.com/arthrex/activerecord-sqlserver-adapter.git', :branch => 'master'
+
+  gem 'pg'
 end
 
 
