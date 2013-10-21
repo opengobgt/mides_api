@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/arthrex/activerecord-sqlserver-adapter.git
+  revision: 8963f59ce902c57e6a4507ea955e568fd7d2a0f8
+  branch: master
+  specs:
+    activerecord-sqlserver-adapter (3.2.13)
+      activerecord (~> 4.0.0.beta)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -99,7 +107,6 @@ GEM
     net-ssh (2.7.0)
     net-ssh-gateway (1.2.0)
       net-ssh (>= 2.6.5)
-    pg (0.17.0)
     polyglot (0.3.3)
     pry (0.9.12.2)
       coderay (~> 1.0.5)
@@ -116,11 +123,6 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.0.0)
       sprockets-rails (~> 2.0.0)
-    rails_12factor (0.0.2)
-      rails_serve_static_assets
-      rails_stdout_logging
-    rails_serve_static_assets (0.0.1)
-    rails_stdout_logging (0.0.3)
     railties (4.0.0)
       actionpack (= 4.0.0)
       activesupport (= 4.0.0)
@@ -171,6 +173,7 @@ GEM
       atomic
     tilt (1.4.1)
     timers (1.1.0)
+    tiny_tds (0.6.1)
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
@@ -188,6 +191,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers
+  activerecord-sqlserver-adapter!
   annotate
   capistrano
   capistrano-ext
@@ -198,9 +202,7 @@ DEPENDENCIES
   guard-bundler
   guard-rails
   jbuilder (~> 1.2)
-  pg
   rails (= 4.0.0)
-  rails_12factor
   resty
   rvm-capistrano
   sass-rails (~> 4.0.0)
@@ -208,5 +210,6 @@ DEPENDENCIES
   seed_dump
   sqlite3
   therubyracer
+  tiny_tds
   uglifier (>= 1.3.0)
   unicorn

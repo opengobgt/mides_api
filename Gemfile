@@ -16,7 +16,6 @@ gem 'coffee-rails', '~> 4.0.0'
  gem 'therubyracer', platforms: :ruby
 
 
-
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
@@ -43,20 +42,18 @@ group :production do
   gem 'unicorn'
 
   # Coneccion SQL Server
-  # gem 'tiny_tds'
+  gem 'tiny_tds'
 
   # Use sqlserver as the database for Active Record
-  # gem 'activerecord-sqlserver-adapter', :git => 'https://github.com/arthrex/activerecord-sqlserver-adapter.git', :branch => 'master'
+  gem 'activerecord-sqlserver-adapter', :git => 'https://github.com/arthrex/activerecord-sqlserver-adapter.git', :branch => 'master'
 
-  gem 'pg'
-
-  gem 'rails_12factor'
+  # gem 'pg'
+  # gem 'rails_12factor'
 end
 
 
 group :development do
-  gem 'seed_dump'
-  # gem 'sqlite3'
+  gem 'seed_dump'  
   gem 'annotate'
   gem 'capistrano'
   gem 'capistrano-ext'
