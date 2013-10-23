@@ -63,6 +63,7 @@ group :development do
   gem 'capistrano'
   gem 'capistrano-ext'
   gem 'rvm-capistrano'
+  gem 'capistrano-unicorn', :require => false
 
   gem 'guard'
   gem 'guard-rails'

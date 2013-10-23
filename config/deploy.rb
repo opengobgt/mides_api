@@ -1,25 +1,52 @@
-set :application, "set your application name here"
-set :repository,  "set your repository location here"
+require 'bundler/capistrano'
+require 'capistrano-unicorn'
 
-# set :scm, :git # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names
-# Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
+set :application, "api.mides.gob.gt"
 
-role :web, "your web-server here"                          # Your HTTP server, Apache/etc
-role :app, "your app-server here"                          # This may be the same as your `Web` server
-role :db,  "your primary db-server here", :primary => true # This is where Rails migrations will run
-role :db,  "your slave db-server here"
+# Configuracion de repositorio
+set :scm, :git
+set :repository,  "git@github.com:opengobgt/mides_api.git"
+set :branch, 'master'
 
-# if you want to clean up old releases on each deploy uncomment this:
-# after "deploy:restart", "deploy:cleanup"
 
-# if you're still using the script/reaper helper you will need
-# these http://github.com/rails/irs_process_scripts
+# Configuracion de tipos de servidores
+role :web, "api.mides.gob.gt"                          # Your HTTP server, Apache/etc
+role :app, "api.mides.gob.gt"                          # This may be the same as your `Web` server
+role :db,  "api.mides.gob.gt", :primary => true # This is where Rails migrations will run
 
-# If you are using Passenger mod_rails uncomment this:
-# namespace :deploy do
-#   task :start do ; end
-#   task :stop do ; end
-#   task :restart, :roles => :app, :except => { :no_release => true } do
-#     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
-#   end
-# end
+# Connection and credentials section
+ssh_options[:forward_agent] = true
+ssh_options[:keys] = ["#{ENV['HOME']}/.ssh/id_rsa.pub"]
+set :use_sudo, false
+
+# Donde instalar el fuente y con que usuario
+set :deploy_to, "/var/www/#{application}"
+set :rails_env, :production
+set :user, "api"
+set :group, "www-data"
+
+desc <<-DESC
+ [internal] Updates the symlink for database.yml file to the just deployed release.
+DESC
+namespace :db do
+task :symlink, :except => { :no_release => true } do
+      run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+    end
+end
+after "deploy:finalize_update", "db:symlink"
+
+# Limpiar release antiguos despues de reiniciar
+after "deploy:restart", "deploy:cleanup"
+
+# Reiniciar servidor unicorn
+after 'deploy:restart', 'unicorn:reload'    # app IS NOT preloaded
+after 'deploy:restart', 'unicorn:restart'   # app preloaded
+after 'deploy:restart', 'unicorn:duplicate' # before_fork hook implemented (zero downtime deployments)
+
+
+# configuracion ruby
+#role :rvm, "api.mides.gob.gt"
+#set :rvm_require_role, :rvm
+set :rvm_ruby_string, 'ruby-2.0.0-p247'
+set :rvm_type, :system
+require "rvm/capistrano"
