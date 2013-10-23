@@ -13,7 +13,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
- gem 'therubyracer', platforms: :ruby
+gem 'therubyracer', platforms: :ruby
 
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -36,6 +36,11 @@ gem 'foreman'
 
 # Llaves compuestas
 gem 'composite_primary_keys', "~> 6.0.0"
+
+gem 'rack-cors', :require => 'rack/cors'
+
+# Paginacion de Resultados
+gem 'kaminari'
 
 group :production do
   # Servidor web + Apache 
@@ -62,6 +67,7 @@ group :development do
   gem 'guard'
   gem 'guard-rails'
   gem 'guard-bundler'
+  gem 'guard-livereload'
 
   gem 'sqlite3'
 

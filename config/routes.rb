@@ -2,8 +2,9 @@ MidesApi::Application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  root 'departamentos#index'
+  root 'home#index'
 
+  get '/v1/api-docs(.format)', :to => redirect('/api-docs.json')
 
   scope '/v1' do
     resources :departamentos, :only => [:index, :show] do
@@ -22,7 +23,7 @@ MidesApi::Application.routes.draw do
         resources :estudiantes, :only => [:index, :show]
       end
 
-      resources :estudiantes, :only => [:show] do
+      resources :estudiantes, :only => [:index, :show] do
         resource :familia, :only => [:show]
         resources :asistencias, :only => [:index]
       end

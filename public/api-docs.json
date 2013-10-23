@@ -1,0 +1,12 @@
+{
+  "apiVersion": "0.1",
+  "swaggerVersion": "1.2",
+  "basePath": "http://localhost:3000/v1",
+  "resourcePath: "/departamentos",
+  "apis": [
+    {
+      "path": "/departamentos/{departamento_id}",
+      "description": "Informacion sobre el departamento"
+    }
+  ]
+}

@@ -1,0 +1,389 @@
+<H1>api.mides.gob.gt</h1>
+<p>Especificación y Recursos</p>
+
+<h2>API V0.1</h2>
+
+<p>Este documento describe los recursos del API v0.1 del Ministerio
+  de Desarrollo. Si tiene dudas o comentarios por favor ingrese al
+  vinculo de contacto para enviar un mensaje a los
+  administradores.</p>
+
+<h3>Schema</h3>
+
+<p>Todos los accesso del API se realizar por medio de HTTPS y el
+  dominio <code>api.mides.gob.gt</code>. Toda la informacion se envia
+  y recibe por medio de JSON.</p>
+
+
+<pre>
+curl -i http://api.mides.gob.gt/v1/departamentos.json
+
+HTTP/1.1 200 OK 
+X-Frame-Options: SAMEORIGIN
+X-Xss-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+X-Ua-Compatible: chrome=1
+Content-Type: application/json; charset=utf-8
+Etag: "d8d1f32da98f0c7cf565731d3e88cb3c"
+Cache-Control: max-age=0, private, must-revalidate
+X-Request-Id: ea0427d7-5390-443a-9029-19b6f0cfe50b
+X-Runtime: 0.034323
+Server: WEBrick/1.3.1 (Ruby/2.0.0/2013-06-27)
+Date: Mon, 21 Oct 2013 22:41:33 GMT
+Content-Length: 243
+Connection: Keep-Alive
+
+{
+  "departamentos": [
+    {
+      "id": 16,
+      "nombre": "ALTA VERAPAZ",
+      "url": "http://localhost:3000/v1/departamentos/16",
+      "municipios_url": "http://localhost:3000/v1/departamentos/16/municipios",
+      "escuelas_url": "http://localhost:3000/v1/departamentos/16/escuelas"
+    }
+  ]
+}
+</pre>
+
+<p>Los campos vacios se representan por medio de <code>null</code> en
+  lugar de omitirse.</p>
+
+<p>Todos los campos de fecha se regresan en formato ISO 8601: <code>YYYY-MM-DDTHH:MM:SSZ</code></p>
+
+<h3>Parametros</h3>
+
+<p>Varios metodos del API pueden tomar parametros adicionales para
+  solicitar que recursos anidados sean embedidos en la respuesta.</p>
+
+<p>Por ejemplo: Un recurso Departamento tiene muchos recursos
+  Municipios. Estos pueden ser solicitados por medio del
+  parametro <code>?embed=municipios</code>. En general cualquier
+  campo con el formato <code>nombrecammpo_url</code> puede ser
+  solicitado por medio del parametro <code>embed</code></p>
+
+<pre>
+curl -i http://localhost:3000/v1/departamentos.json?embed=municipios
+
+curl -i http://localhost:3000/v1/departamentos.json?embed=escuelas
+
+curl -i  http://localhost:3000/v1/departamentos.json?embed=municipios,escuelas
+</pre>
+
+<h3>Paginación</h3>
+
+<p>
+Los recursos  que regresen múltiples ítem serán paginados
+a 30 ítem por defecto. Es posible especificar mas páginas con el
+parámetro <code>?page</code>. Para algunos recursos, también es posible
+indicar el numero de ítem a retornar por pagina utilizando el
+parámetro <code>?per_page</code>.
+</p>
+
+<pre>
+  $ curl https://api.github.com/user/repos?page=2&per_page=100
+</pre>
+
+<p>
+La numeración de las paginas tiene base 1. Omitir el
+parámetro <code>?page</code> retorna la primera página por defecto.
+</p>
+
+
+<h3>Link Header</h3>
+<p>La información de paginación esta esta incluida en el campo Link del
+Header de la pagina. Es importante seguir estos url en lugar de
+intentar construirlos. 
+</p>
+
+<pre> 
+ Link: &lt;http://api.mides.gob.gt/estudiantes.json?page=3&amp;per_page=100&gt;; rel=&quot;next&quot;, &lt;https://api.mides.gob.gt/estudiantes.json?page=50&amp;per_page=100&gt;; rel=&quot;last&quot;
+</pre>
+
+<p>
+Se incluye un salto de pagina para mejorar la visualización de los valores.
+</p>
+
+<p>
+Los posibles valores de <code>rel</code> son:
+</p>
+
+<dl>
+  <dt><code> next</code></dt>
+  <dd>Muestra el URL con la siguiente pagina de resultados.</dd>
+  <dt><code>last</code></dt>
+  <dd>Muestra el URL con la ultima pagina de resultados.</dd>
+  <dt><code>first</code></dt>
+  <dd>Muestra el URL con la ultima pagina de resultados.</dd>
+  <dt><code>prev</code></dt>
+  <dd>Muestra el URL con la pagina anterior de resultados.</dd>
+</dl>
+
+
+<h2>Recursos</h2>
+
+<h3 id="departamentos-section">Departamentos</h3>
+<hr />
+
+
+<ul>
+  <li><a href="#departamentos">Listado de Departamentos</a></li>
+  <li><a href="#departamento">Obtener un Departamento</a></li>
+</ul>
+
+
+<h4 id="departamentos">Listado de Departamentos</h4>
+<pre>
+  GET /v1/departamentos.json
+</pre>
+
+<pre class="prettyprint json-lang">
+{
+    "departamentos": [
+        {
+            "id": 16,
+            "nombre": "ALTA VERAPAZ",
+            "url": "http://api.mides.gob.gt:80/v1/departamentos/16",
+            "municipios_url": "http://api.mides.gob.gt/v1/departamentos/16/municipios",
+            "escuelas_url": "http://api.mides.gob.gt/v1/departamentos/16/escuelas"
+        }
+    ]
+}
+</pre>
+
+<h4 id="departamento">Obtener un Departamento</h4>
+<pre>
+  GET /v1/departamentos/:id.json
+</pre>
+<pre class="prettyprint lang-json">
+{
+    "departamento": {
+        "id": 16,
+        "nombre": "ALTA VERAPAZ",
+        "url": "http://api.mides.gob.gt:80/v1/departamentos/16",
+        "municipios_url": "http://api.mides.gob.gt/v1/departamentos/16/municipios",
+        "escuelas_url": "http://api.mides.gob.gt/v1/departamentos/16/escuelas"
+    }
+} 
+</pre>
+
+<h2 id="municipios-section">Municipios</h2>
+<hr />
+
+<ul>
+  <li><a href="#municipios">Listado de Municipios</a></li>
+  <li><a href="#municipio">Obtener un Municipio</a></li>
+</ul>
+
+<h4 id="municipios">Listado de Municipios</h4>
+<pre>
+  GET /v1/departamento/:departamento_id/municipios.json
+</pre>
+
+<pre class="prettyprint lang-json">
+{
+    "municipios": [
+        {
+            "id": 3,
+            "nombre": "SAN CRISTOBAL VERAPAZ",
+            "url": "http://api.mides.gob.gt/v1/departamentos/16/municipios/3",
+            "departamento_url": "http://api.mides.gob.gt:80/v1/departamentos/16",
+            "comunidades_url": "http://api.mides.gob.gt/v1/departamentos/16/municipios/3/comunidades",
+            "escuelas_url": "http://api.mides.gob.gt/v1/departamentos/16/municipios/3/escuelas"
+        },
+        {
+            "id": 7,
+            "nombre": "PANZOS",
+            "url": "http://api.mides.gob.gt/v1/departamentos/16/municipios/7",
+            "departamento_url": "http://api.mides.gob.gt:80/v1/departamentos/16",
+            "comunidades_url": "http://api.mides.gob.gt/v1/departamentos/16/municipios/7/comunidades",
+            "escuelas_url": "http://api.mides.gob.gt/v1/departamentos/16/municipios/7/escuelas"
+        },
+        ....
+    ]
+}
+</pre>
+
+<h4 id="municipio">Obtener un Municipio</h4>
+<pre>
+  GET /v1/departamento/:departamento_id/municipios/:id.json
+</pre>
+<pre class="prettyprint lang-json">
+{
+    "municipio": {
+        "id": 3,
+        "nombre": "SAN CRISTOBAL VERAPAZ",
+        "url": "http://api.mides.gob.gt/v1/departamentos/16/municipios/3",
+        "departamento_url": "http://api.mides.gob.gt:80/v1/departamentos/16",
+        "comunidades_url": "http://api.mides.gob.gt/v1/departamentos/16/municipios/3/comunidades",
+        "escuelas_url": "http://api.mides.gob.gt/v1/departamentos/16/municipios/3/escuelas"
+    }
+}
+</pre>
+
+<h2 id="comunidades-section">Comunidades</h2>
+<hr />
+
+<ul>
+  <li><a href="#comunidades">Listado de Comunidades</a></li>
+  <li><a href="#comunidad">Obtener una Comunidad</a></li>
+</ul>
+
+<h4 id="comunidades">Listado de Comunidades</h4>
+<pre>
+  GET /v1/departamentos/:departamento_id/municipios/:municipio_id/comunidades
+</pre>
+
+<pre class="prettyprint lang-json">
+{
+    "comunidades": [
+        {
+            "id": 10,
+            "nombre": "CASERIO CARABAJAL",
+            "url": "http://localhost:3000/v1/departamentos/16/municipios/7/comunidades/10",
+            "departamento_url": "http://localhost:3000/v1/departamentos/16",
+            "municipio_url": "http://localhost:3000/v1/departamentos/16/municipios/7"
+        },
+        {
+            "id": 134,
+            "nombre": "CASERIO SANTA MARIA",
+            "url": "http://localhost:3000/v1/departamentos/16/municipios/7/comunidades/134",
+            "departamento_url": "http://localhost:3000/v1/departamentos/16",
+            "municipio_url": "http://localhost:3000/v1/departamentos/16/municipios/7"
+        },
+        ....
+    ]
+}  
+</pre>
+
+<h4 id="comunidad">Obtener una Comunidad</h4>
+<pre>
+    GET /v1/departamentos/:departamento_id/municipios/:municipio_id/comunidades/:id.json
+</pre>
+<pre class="prettyprint lang-json">
+{
+    "comunidad": {
+        "id": 10,
+        "nombre": "CASERIO CARABAJAL",
+        "url": "http://localhost:3000/v1/departamentos/16/municipios/7/comunidades/10",
+        "departamento_url": "http://localhost:3000/v1/departamentos/16",
+        "municipio_url": "http://localhost:3000/v1/departamentos/16/municipios/7"
+    }
+}
+</pre>
+
+<h1>Recursos Educacion</h1>
+
+<h2 id="escuelas-section">Escuelas</h2>
+<hr />
+
+<ul>
+  <li><a href="#escuelas">Listado de Escuelas</a></li>
+  <li><a href="#escuela">Obtener un Escuela</a></li>
+  <li><a href="#escuela">Listado de Escuelas por Departamento</a></li>
+</ul>
+
+<h4 id="escuelas">Listado de Escuelas</h4>
+<pre>
+  GET /v1/escuelas.json
+</pre>
+
+<pre class="prettyprint lang-json">
+{
+    "escuelas": [
+        {
+            "id": "16-03-0025-43",
+            "nombre": "EORM-CASERIO QUIXALITO",
+            "direccion": "CASERIO QUIXALITO",
+            "telefono": null,
+            "nivel": "PRIMARIA",
+            "jornada": "MATUTINA",
+            "sector": "OFICIAL",
+            "status": "ABIERTA",
+            "url": "http://localhost:3000/v1/educacion/escuelas/16-03-0025-43",
+            "departamento_url": "http://localhost:3000/v1/departamentos/16",
+            "municipio_url": "http://localhost:3000/v1/departamentos/16/municipios/3",
+            "estudiantes_url": "http://localhost:3000/v1/educacion/escuelas/16-03-0025-43/estudiantes"
+        },
+        {
+            "id": "16-07-0036-42",
+            "nombre": "EODP-CASERIO CARABAJAL",
+            "direccion": "CASERIO CARABAJAL",
+            "telefono": null,
+            "nivel": "PARVULOS",
+            "jornada": "MATUTINA",
+            "sector": "OFICIAL",
+            "status": "ABIERTA",
+            "url": "http://localhost:3000/v1/educacion/escuelas/16-07-0036-42",
+            "departamento_url": "http://localhost:3000/v1/departamentos/16",
+            "municipio_url": "http://localhost:3000/v1/departamentos/16/municipios/7",
+            "estudiantes_url": "http://localhost:3000/v1/educacion/escuelas/16-07-0036-42/estudiantes"
+        },
+        ....
+    ]
+}  
+</pre>
+
+<h4 id="escuela">Obtener un Escuela</h4>
+<pre>
+  GET /v1/educacion/escuelas/:id.json
+</pre>
+<pre class="prettyprint lang-json">
+{
+    "escuela": {
+        "id": "16-03-0025-43",
+        "nombre": "EORM-CASERIO QUIXALITO",
+        "direccion": "CASERIO QUIXALITO",
+        "telefono": null,
+        "nivel": "PRIMARIA",
+        "jornada": "MATUTINA",
+        "sector": "OFICIAL",
+        "status": "ABIERTA",
+        "url": "http://localhost:3000/v1/educacion/escuelas/16-03-0025-43",
+        "departamento_url": "http://localhost:3000/v1/departamentos/16",
+        "municipio_url": "http://localhost:3000/v1/departamentos/16/municipios/3",
+        "estudiantes_url": "http://localhost:3000/v1/educacion/escuelas/16-03-0025-43/estudiantes"
+    }
+}
+</pre>
+
+<h4 id="escuelas-por-departamento">Listado de Escuelas por Departamento</h4>
+<pre>
+  GET /v1/departamentos/:departamento_id/escuelas.json
+</pre>
+
+<h4 id="escuelas-por-municipio">Listado de Escuelas por Municipio</h4>
+<pre>
+  GET /v1/departamentos/:departamento_id/municipios/:escuelas.json
+</pre>
+
+
+<!-- ################################################## -->
+<!--                 Estudiantes                        -->
+<!-- ################################################## -->
+
+
+<h2 id="estudiantes-section">Estudiantes</h2> --
+<hr />
+
+<ul>
+  <li><a href="#estudiantes">Listado de Estudiantes</a></li>
+  <li><a href="#estudiante">Obtener un Estudiante</a></li>
+</ul>
+
+<h4 id="estudiantes">Listado de Estudiantes</h4>
+<pre>
+  GET /v1/educacion/estudiantes.json
+</pre>
+
+<pre class="prettyprint lang-json">
+  
+</pre>
+
+<h4 id="estudiante">Obtener un Estudiante</h4>
+<pre>
+  GET /v1/educacion/estudiantes/:id.json
+</pre>
+<pre class="prettyprint lang-json">
+</pre>
+
