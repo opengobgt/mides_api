@@ -11,7 +11,7 @@ class FamiliaSerializer < ActiveModel::Serializer
   end
 
   def miembros_url
-    ''
+    familia_miembros_url(object)
   end
 
   def comunidad_url

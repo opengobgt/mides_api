@@ -274,6 +274,10 @@ Los posibles valores de <code>rel</code> son:
 
 <h1>Recursos Educacion</h1>
 
+<!-- ################################################## -->
+<!--                 Escuelas                           -->
+<!-- ################################################## -->
+
 <h2 id="escuelas-section">Escuelas</h2>
 <hr />
 
@@ -363,12 +367,15 @@ Los posibles valores de <code>rel</code> son:
 <!-- ################################################## -->
 
 
-<h2 id="estudiantes-section">Estudiantes</h2> --
+<h2 id="estudiantes-section">Estudiantes</h2>
 <hr />
 
 <ul>
   <li><a href="#estudiantes">Listado de Estudiantes</a></li>
   <li><a href="#estudiante">Obtener un Estudiante</a></li>
+  <li><a href="#estudiantes-por-departamento">Listado de Estudiantes por Departamento</a></li>
+  <li><a href="#estudiantes-por-municipio">Listado de Estudiantes por Municipio</a></li>
+  <li><a href="#estudiantes-por-escuela">Listado de Estudiantes por Escuela</a></li>
 </ul>
 
 <h4 id="estudiantes">Listado de Estudiantes</h4>
@@ -377,7 +384,39 @@ Los posibles valores de <code>rel</code> son:
 </pre>
 
 <pre class="prettyprint lang-json">
-  
+  {
+    "estudiantes": [
+        {
+            "id": 24648274,
+            "primer_nombre": "CARLOS",
+            "segundo_nombre": null,
+            "primer_apellido": "AMALEM",
+            "segundo_apellido": "CHOMO",
+            "fecha_nacimiento": "2000-08-29T00:00:00.000-06:00",
+            "genero": "M",
+            "beneficio": "E",
+            "url": "http://localhost:3000/v1/educacion/estudiantes/24648274",
+            "escuela": "http://localhost:3000/v1/educacion/escuelas/16-03-0025-43",
+            "familia": "http://localhost:3000/v1/educacion/estudiantes/24648274/familia",
+            "asistencias": "http://localhost:3000/v1/educacion/estudiantes/24648274/asistencias"
+        },
+        {
+            "id": 24648275,
+            "primer_nombre": "MARIO",
+            "segundo_nombre": null,
+            "primer_apellido": "AMALEM",
+            "segundo_apellido": "CHOMO",
+            "fecha_nacimiento": "2002-01-22T00:00:00.000-06:00",
+            "genero": "M",
+            "beneficio": "E",
+            "url": "http://localhost:3000/v1/educacion/estudiantes/24648275",
+            "escuela": "http://localhost:3000/v1/educacion/escuelas/16-03-0025-43",
+            "familia": "http://localhost:3000/v1/educacion/estudiantes/24648275/familia",
+            "asistencias": "http://localhost:3000/v1/educacion/estudiantes/24648275/asistencias"
+        },
+        ...
+   ]
+ }
 </pre>
 
 <h4 id="estudiante">Obtener un Estudiante</h4>
@@ -385,5 +424,143 @@ Los posibles valores de <code>rel</code> son:
   GET /v1/educacion/estudiantes/:id.json
 </pre>
 <pre class="prettyprint lang-json">
+{
+    "estudiante": {
+        "id": 24648274,
+        "primer_nombre": "CARLOS",
+        "segundo_nombre": null,
+        "primer_apellido": "AMALEM",
+        "segundo_apellido": "CHOMO",
+        "fecha_nacimiento": "2000-08-29T00:00:00.000-06:00",
+        "genero": "M",
+        "beneficio": "E",
+        "url": "http://localhost:3000/v1/educacion/estudiantes/24648274",
+        "escuela": "http://localhost:3000/v1/educacion/escuelas/16-03-0025-43",
+        "familia": "http://localhost:3000/v1/educacion/estudiantes/24648274/familia",
+        "asistencias": "http://localhost:3000/v1/educacion/estudiantes/24648274/asistencias"
+    }
+}
+</pre>
+
+<h4 id="estudiantes-por-departamento">Listado de Estudiantes por Departamento</h4>
+<pre>
+  GET /v1/departamentos/:departamento_id/estudiantes.json
+</pre>
+
+<h4 id="estudiantes-por-municipio">Listado de Estudiantes por Municipio</h4>
+<pre>
+  GET /v1/departamentos/:departamento_id/municipos/:municipio_id/estudiantes.json
+</pre>
+
+<h4 id="estudiantes-por-escuela">Listado de Estudiantes por Escuela</h4>
+<pre>
+  GET /v1/educacion/escuelas/:escuela_id/estudiantes.json
+</pre>
+
+
+<!-- ################################################## -->
+<!--                 Familias                           -->
+<!-- ################################################## -->
+
+<h2 id="familias-section">Familias</h2>
+<hr />
+
+<ul>
+  <li><a href="#familias">Listado de Familias</a></li>
+  <li><a href="#familia">Obtener una Familia</a></li>
+  <li><a href="#familia-miembros">Listado de Miembros de la Familia</a></li>
+</ul>
+
+<h4 id="familias">Listado de Familias</h4>
+<pre>
+  GET /v1/educacion/familias.json
+</pre>
+
+<pre class="prettyprint lang-json">
+{
+    "familias": [
+        {
+            "id": "500040947",
+            "titular": 24648210,
+            "direccion": "QUIXALITO",
+            "url": "http://localhost:3000/v1/educacion/familias/500040947",
+            "departamento_url": "http://localhost:3000/v1/departamentos/16",
+            "municipio_url": "http://localhost:3000/v1/departamentos/16/municipios/3",
+            "comunidad_url": "http://localhost:3000/v1/departamentos/16/municipios/3/comunidades/70",
+            "miembros_url": "http://localhost:3000/v1/educacion/estudiantes?familia_id=500040947"
+        },
+        {
+            "id": "500040948",
+            "titular": 24648216,
+            "direccion": "SECTOR 1 A 50 MTS DE LA ESCUELA",
+            "url": "http://localhost:3000/v1/educacion/familias/500040948",
+            "departamento_url": "http://localhost:3000/v1/departamentos/16",
+            "municipio_url": "http://localhost:3000/v1/departamentos/16/municipios/3",
+            "comunidad_url": "http://localhost:3000/v1/departamentos/16/municipios/3/comunidades/70",
+            "miembros_url": "http://localhost:3000/v1/educacion/estudiantes?familia_id=500040948"
+        },
+        ...
+    ]
+}
+</pre>
+
+<h4 id="familia">Obtener un Familia</h4>
+<pre>
+  GET /v1/familias/:id.json
+</pre>
+<pre class="prettyprint lang-json">
+{
+    "familia": {
+        "id": "500040947",
+        "titular": 24648210,
+        "direccion": "QUIXALITO",
+        "url": "http://localhost:3000/v1/educacion/familias/500040947",
+        "departamento_url": "http://localhost:3000/v1/departamentos/16",
+        "municipio_url": "http://localhost:3000/v1/departamentos/16/municipios/3",
+        "comunidad_url": "http://localhost:3000/v1/departamentos/16/municipios/3/comunidades/70",
+        "miembros_url": "http://localhost:3000/v1/educacion/estudiantes?familia_id=500040947"
+    }
+}
+</pre>
+
+
+<h4 id="familia-miembros">Obtener listado de Miembros de la Familia</h4>
+<pre>
+  GET /v1/familias/:id/miembros
+</pre>
+<pre class="prettyprint lang-json">
+{
+    "estudiantes": [
+        {
+            "id": 24648274,
+            "primer_nombre": "CARLOS",
+            "segundo_nombre": null,
+            "primer_apellido": "AMALEM",
+            "segundo_apellido": "CHOMO",
+            "fecha_nacimiento": "2000-08-29T00:00:00.000-06:00",
+            "genero": "M",
+            "beneficio": "E",
+            "url": "http://localhost:3000/v1/educacion/estudiantes/24648274",
+            "escuela": "http://localhost:3000/v1/educacion/escuelas/16-03-0025-43",
+            "familia": "http://localhost:3000/v1/educacion/estudiantes/24648274/familia",
+            "asistencias": "http://localhost:3000/v1/educacion/estudiantes/24648274/asistencias"
+        },
+        {
+            "id": 24648275,
+            "primer_nombre": "MARIO",
+            "segundo_nombre": null,
+            "primer_apellido": "AMALEM",
+            "segundo_apellido": "CHOMO",
+            "fecha_nacimiento": "2002-01-22T00:00:00.000-06:00",
+            "genero": "M",
+            "beneficio": "E",
+            "url": "http://localhost:3000/v1/educacion/estudiantes/24648275",
+            "escuela": "http://localhost:3000/v1/educacion/escuelas/16-03-0025-43",
+            "familia": "http://localhost:3000/v1/educacion/estudiantes/24648275/familia",
+            "asistencias": "http://localhost:3000/v1/educacion/estudiantes/24648275/asistencias"
+        },
+        ...
+    ]
+}
 </pre>
 

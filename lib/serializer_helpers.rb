@@ -57,6 +57,13 @@ module SerializerHelpers
     end
   end
 
+  def include_miembros?
+    if scope.params[:embed]
+      embed = scope.params[:embed].split(',') 
+      return true if embed.include?('miembros')
+    end
+  end
+
   def departamento_url
     scope.request.protocol + \
     scope.request.host + \
@@ -93,17 +100,18 @@ module SerializerHelpers
   end
 
   
-  def estudiante_url
-    scope.request.protocol + \
-    scope.request.host + \
-    (':' + scope.request.port.to_s rescue '') + \
-    estudiante_path(object.miembro_id)
-  end
-
   def estudiantes_url
     escuela_estudiantes_url(object.id)
   end
 
-  
+  def authority_path
+    scope.request.protocol + \
+    scope.request.host + \
+    (':' + scope.request.port.to_s rescue '') 
+  end
+
+  def estudiante_url
+    authority_path +  estudiante_path(object.miembro_id)
+  end
 
 end

@@ -6,16 +6,18 @@ class FamiliasController < ApplicationController
       estudiante = Miembro.find(params[:estudiante_id])
       @familias = estudiante.familia
     elsif params[:comunidad_id]
-      @familias = Familia.where(LugPobCod: params[:comunidad_id])
+      @familias = Familia.where(LugPobCod: params[:comunidad_id]).page(params[:page]).per(params[:per_page])
     elsif params[:municipio_id]
-      @familias = Familia.where(MunCod: params[:municipio_id])
+      @familias = Familia.where(MunCod: params[:municipio_id]).page(params[:page]).per(params[:per_page])
     elsif params[:departamento_id]
-      @familias = Familia.where(DepCod: params[:departamento_id])
+      @familias = Familia.where(DepCod: params[:departamento_id]).page(params[:page]).per(params[:per_page])
+    else
+      @familias = Familia.order("DepCod asc, MunCod asc, LugPobCod asc, HogCod asc").page(params[:page]).per(params[:per_page])
     end
 
 
     respond_to do |format|
-      format.json { render json: @familia, each_serializer: FamiliaSerializer}
+      format.json { render json: @familias, each_serializer: FamiliaSerializer}
     end
   end
 
