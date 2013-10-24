@@ -3,41 +3,38 @@ MidesApi::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   root 'home#index'
-
-  get '/v1/api-docs(.format)', :to => redirect('/api-docs.json')
-
+  
+  get '/v1/api-docs(.format)', to: redirect('/api-docs.json')
+  
   scope '/v1' do
-    resources :departamentos, :only => [:index, :show] do
+    resources :departamentos, only: [:index, :show], defaults: {format: :json} do
 
-      resources :municipios, :only => [:index, :show] do
-        resources :comunidades, :only => [:index, :show] 
-        resources :escuelas, :only => [:index, :show]
+      resources :municipios, only: [:index, :show], defaults: {format: :json} do
+        resources :comunidades, only: [:index, :show], defaults: {format: :json}
+        resources :escuelas, only: [:index, :show], defaults: {format: :json}
       end
-
-      resources :escuelas, :only => [:index, :show]
-
+      
+      resources :escuelas, only: [:index, :show], defaults: {format: :json}
     end
-
+    
     scope '/educacion' do
-      resources :escuelas, :only => [:index, :show] do
-        resources :estudiantes, :only => [:index, :show]
+      resources :escuelas, only: [:index, :show], defaults: {format: :json} do
+        resources :estudiantes, only: [:index, :show], defaults: {format: :json}
       end
-
-      resources :estudiantes, :only => [:index, :show] do
-        resource :familia, :only => [:show]
-        resources :asistencias, :only => [:index]
+      
+      resources :estudiantes, only: [:index, :show], defaults: {format: :json} do
+        resource :familia, only: [:show], defaults: {format: :json}
+        resources :asistencias, only: [:index], defaults: {format: :json}
       end
-
-      resources :familias, :only => [:index, :show] do
-        get 'miembros' => "estudiantes#index"
+      
+      resources :familias, only: [:index, :show], defaults: {format: :json} do
+        get 'miembros' => 'estudiantes#index', defaults: {format: :json}
       end
     end
-
-   
     
   end
-
-
+  
+  
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
