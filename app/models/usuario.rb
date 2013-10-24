@@ -15,6 +15,9 @@ class Usuario < ActiveRecord::Base
   belongs_to :municipio, foreign_key: "MunCod"
   has_many :asitencias, foreign_key: "UsuCod"
   
+  def self.authenticate code, password
+    self.where(UsuNom: code).where(UsuPas: password).any?
+  end
 end
 
 # == Schema Information

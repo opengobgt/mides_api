@@ -24,7 +24,7 @@ MidesApi::Application.routes.draw do
       
       resources :estudiantes, only: [:index, :show], defaults: {format: :json} do
         resource :familia, only: [:show], defaults: {format: :json}
-        resources :asistencias, only: [:index], defaults: {format: :json}
+        resources :asistencias, only: [:index, :create], defaults: {format: :json}
       end
       
       resources :familias, only: [:index, :show], defaults: {format: :json} do
