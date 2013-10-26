@@ -22,7 +22,11 @@ class Escuela < ActiveRecord::Base
   has_many :asistencias, foreign_key: "Cod_UDI"
 
   has_many :estudiantes, -> { distinct }, through: :asistencias
-
+  
+  def grados
+    self.asistencias.select(:Grado).distinct.order(:Grado).pluck :Grado
+  end
+  
 end
 
 # == Schema Information

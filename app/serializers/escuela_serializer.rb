@@ -2,7 +2,8 @@ class EscuelaSerializer < ActiveModel::Serializer
   include SerializerHelpers 
 
   attributes :id, :nombre, :direccion, :telefono, :nivel, :jornada, \
-  :sector, :status, :url, :departamento_url, :municipio_url, :estudiantes_url
+  :sector, :status, :url, :departamento_url, :municipio_url, \
+  :estudiantes_url, :grados
 
   has_one :departamento
   has_one :municipio

@@ -5,8 +5,10 @@ class EstudiantesController < ApplicationController
 
   def index
     if params[:escuela_id]
-      escuela = Escuela.find(params[:escuela_id])
-      @estudiantes = escuela.estudiantes.order(:MieApe1, :MieApe2, :MieNom1, :MieNom2).page(params[:page]).per(params[:per_page])
+      scope = Escuela.find(params[:escuela_id])
+	.estudiantes.order(:MieApe1, :MieApe2, :MieNom1, :MieNom2)
+      scope = scope.where(Asistencia.table_name + '.Grado = ?', params[:grado].to_i) if params[:grado]
+      @estudiantes = scope.page(params[:page]).per(params[:per_page])
     elsif params[:familia_id]
       familia = Familia.find(params[:familia_id])
       @estudiantes = familia.miembros.order(:MieApe1, :MieApe2, :MieNom1, :MieNom2).page(params[:page]).per(params[:per_page])
