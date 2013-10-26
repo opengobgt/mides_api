@@ -30,11 +30,12 @@ MidesApi::Application.routes.draw do
       resources :familias, only: [:index, :show], defaults: {format: :json} do
         get 'miembros' => 'estudiantes#index', defaults: {format: :json}
       end
-
-      resource :asistencias, :only => [:create]
+      
+      resource :asistencias, only: [:create], defaults: {format: :json}
+      resource :estadisticas, only: [:show], defaults: {format: :json}
     end
 
-    resource :sesion, :only => [:new, :create, :destroy]
+    resource :sesion, only: [:new, :create, :destroy], defaults: {format: :json}
     
   end
   
