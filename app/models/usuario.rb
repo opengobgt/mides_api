@@ -23,7 +23,7 @@ class Usuario < ActiveRecord::Base
   end
   
   def self.find_by_email email
-    self.where(UsuNom: email)
+    self.where(UsuNom: email).first rescue nil
   end
 
   def self.authenticate code, password

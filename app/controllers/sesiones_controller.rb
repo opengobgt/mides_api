@@ -4,9 +4,9 @@ class SesionesController < ApplicationController
   def create
     if Usuario.authenticate(params[:email], params[:password])
       @usuario = Usuario.find_by_email(params[:email])
-      render json: @usuario, each_serializer: UsuarioSerializer
+      render json: @usuario#, each_serializer: UsuarioSerializer
     else
-      render :nothing => true, :status => 503
+      render :nothing => true, :status => 401
     end
 
   end
