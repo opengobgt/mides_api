@@ -31,6 +31,8 @@ MidesApi::Application.routes.draw do
         get 'miembros' => 'estudiantes#index', defaults: {format: :json}
       end
     end
+
+    resource :sesion, :only => [:new, :create, :destroy]
     
   end
   

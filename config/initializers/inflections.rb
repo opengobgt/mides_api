@@ -9,6 +9,7 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.irregular 'comunidad', 'comunidades'
   inflect.irregular 'familia', 'familias'
   inflect.irregular 'asistencia', 'asistencias'
+  inflect.irregular 'sesion', 'sesiones'
 #   inflect.uncountable %w( fish sheep )
 end
 

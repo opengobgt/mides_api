@@ -9,7 +9,7 @@ class Asistencia < ActiveRecord::Base
   alias_attribute :escuela_id, :Cod_UDI
   alias_attribute :grado,      :Grado
   alias_attribute :fecha,      :Fecha_Llenado
-  alias_attribute :usario_id,  :Usuario
+  alias_attribute :usuario_id,  :Usuario
   alias_attribute :fecha_digitacion, :Fecha_Digitacion
   alias_attribute :ano,        :Anio
 

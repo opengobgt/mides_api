@@ -13,8 +13,19 @@ class Usuario < ActiveRecord::Base
 
   belongs_to :departamento, foreign_key: "DepCod"
   belongs_to :municipio, foreign_key: "MunCod"
-  has_many :asitencias, foreign_key: "UsuCod"
+  has_many :asistencias, foreign_key: "Usuario"
+
+  has_many :escuelas, through: :asistencias
+
+  def escuelas
+    escuelas = self.asistencias.select("Cod_UDI").distinct.map { |e| e.escuela_id }
+    Escuela.where(Esc_UDI: escuelas)
+  end
   
+  def self.find_by_email email
+    self.where(UsuNom: email)
+  end
+
   def self.authenticate code, password
     self.where(UsuNom: code).where(UsuPas: password).any?
   end
