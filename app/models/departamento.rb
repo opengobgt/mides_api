@@ -10,6 +10,9 @@ class Departamento < ActiveRecord::Base
   has_many :municipios, foreign_key: "DepCod"
   has_many :comunidades, foreign_key: "DepCod"
   has_many :escuelas, foreign_key: "DEPCODMIN"
+  
+  has_many :estudiantes, -> { distinct }, through: :escuelas
+  has_many :familias, -> { distinct }, through: :estudiantes
 
 end
 

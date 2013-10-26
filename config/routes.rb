@@ -32,7 +32,7 @@ MidesApi::Application.routes.draw do
       end
       
       resource :asistencias, only: [:create], defaults: {format: :json}
-      resource :estadisticas, only: [:show], defaults: {format: :json}
+      resource :estadisticas, only: [:index, :show], defaults: {format: :json}
     end
 
     resource :sesion, only: [:new, :create, :destroy], defaults: {format: :json}
