@@ -38,9 +38,9 @@ Connection: Keep-Alive
     {
       "id": 16,
       "nombre": "ALTA VERAPAZ",
-      "url": "http://localhost:3000/v1/departamentos/16",
-      "municipios_url": "http://localhost:3000/v1/departamentos/16/municipios",
-      "escuelas_url": "http://localhost:3000/v1/departamentos/16/escuelas"
+      "url": "http://api.mides.gob.gt/v1/departamentos/16",
+      "municipios_url": "http://api.mides.gob.gt/v1/departamentos/16/municipios",
+      "escuelas_url": "http://api.mides.gob.gt/v1/departamentos/16/escuelas"
     }
   ]
 }
@@ -63,11 +63,11 @@ Connection: Keep-Alive
   solicitado por medio del parametro <code>embed</code></p>
 
 <pre>
-curl -i http://localhost:3000/v1/departamentos.json?embed=municipios
+curl -i http://api.mides.gob.gt/v1/departamentos.json?embed=municipios
 
-curl -i http://localhost:3000/v1/departamentos.json?embed=escuelas
+curl -i http://api.mides.gob.gt/v1/departamentos.json?embed=escuelas
 
-curl -i  http://localhost:3000/v1/departamentos.json?embed=municipios,escuelas
+curl -i  http://api.mides.gob.gt/v1/departamentos.json?embed=municipios,escuelas
 </pre>
 
 <h3>Paginación</h3>
@@ -240,16 +240,16 @@ Los posibles valores de <code>rel</code> son:
         {
             "id": 10,
             "nombre": "CASERIO CARABAJAL",
-            "url": "http://localhost:3000/v1/departamentos/16/municipios/7/comunidades/10",
-            "departamento_url": "http://localhost:3000/v1/departamentos/16",
-            "municipio_url": "http://localhost:3000/v1/departamentos/16/municipios/7"
+            "url": "http://api.mides.gob.gt/v1/departamentos/16/municipios/7/comunidades/10",
+            "departamento_url": "http://api.mides.gob.gt/v1/departamentos/16",
+            "municipio_url": "http://api.mides.gob.gt/v1/departamentos/16/municipios/7"
         },
         {
             "id": 134,
             "nombre": "CASERIO SANTA MARIA",
-            "url": "http://localhost:3000/v1/departamentos/16/municipios/7/comunidades/134",
-            "departamento_url": "http://localhost:3000/v1/departamentos/16",
-            "municipio_url": "http://localhost:3000/v1/departamentos/16/municipios/7"
+            "url": "http://api.mides.gob.gt/v1/departamentos/16/municipios/7/comunidades/134",
+            "departamento_url": "http://api.mides.gob.gt/v1/departamentos/16",
+            "municipio_url": "http://api.mides.gob.gt/v1/departamentos/16/municipios/7"
         },
         ....
     ]
@@ -265,9 +265,9 @@ Los posibles valores de <code>rel</code> son:
     "comunidad": {
         "id": 10,
         "nombre": "CASERIO CARABAJAL",
-        "url": "http://localhost:3000/v1/departamentos/16/municipios/7/comunidades/10",
-        "departamento_url": "http://localhost:3000/v1/departamentos/16",
-        "municipio_url": "http://localhost:3000/v1/departamentos/16/municipios/7"
+        "url": "http://api.mides.gob.gt/v1/departamentos/16/municipios/7/comunidades/10",
+        "departamento_url": "http://api.mides.gob.gt/v1/departamentos/16",
+        "municipio_url": "http://api.mides.gob.gt/v1/departamentos/16/municipios/7"
     }
 }
 </pre>
@@ -304,10 +304,10 @@ Los posibles valores de <code>rel</code> son:
             "jornada": "MATUTINA",
             "sector": "OFICIAL",
             "status": "ABIERTA",
-            "url": "http://localhost:3000/v1/educacion/escuelas/16-03-0025-43",
-            "departamento_url": "http://localhost:3000/v1/departamentos/16",
-            "municipio_url": "http://localhost:3000/v1/departamentos/16/municipios/3",
-            "estudiantes_url": "http://localhost:3000/v1/educacion/escuelas/16-03-0025-43/estudiantes"
+            "url": "http://api.mides.gob.gt/v1/educacion/escuelas/16-03-0025-43",
+            "departamento_url": "http://api.mides.gob.gt/v1/departamentos/16",
+            "municipio_url": "http://api.mides.gob.gt/v1/departamentos/16/municipios/3",
+            "estudiantes_url": "http://api.mides.gob.gt/v1/educacion/escuelas/16-03-0025-43/estudiantes"
         },
         {
             "id": "16-07-0036-42",
@@ -318,10 +318,10 @@ Los posibles valores de <code>rel</code> son:
             "jornada": "MATUTINA",
             "sector": "OFICIAL",
             "status": "ABIERTA",
-            "url": "http://localhost:3000/v1/educacion/escuelas/16-07-0036-42",
-            "departamento_url": "http://localhost:3000/v1/departamentos/16",
-            "municipio_url": "http://localhost:3000/v1/departamentos/16/municipios/7",
-            "estudiantes_url": "http://localhost:3000/v1/educacion/escuelas/16-07-0036-42/estudiantes"
+            "url": "http://api.mides.gob.gt/v1/educacion/escuelas/16-07-0036-42",
+            "departamento_url": "http://api.mides.gob.gt/v1/departamentos/16",
+            "municipio_url": "http://api.mides.gob.gt/v1/departamentos/16/municipios/7",
+            "estudiantes_url": "http://api.mides.gob.gt/v1/educacion/escuelas/16-07-0036-42/estudiantes"
         },
         ....
     ]
@@ -343,10 +343,10 @@ Los posibles valores de <code>rel</code> son:
         "jornada": "MATUTINA",
         "sector": "OFICIAL",
         "status": "ABIERTA",
-        "url": "http://localhost:3000/v1/educacion/escuelas/16-03-0025-43",
-        "departamento_url": "http://localhost:3000/v1/departamentos/16",
-        "municipio_url": "http://localhost:3000/v1/departamentos/16/municipios/3",
-        "estudiantes_url": "http://localhost:3000/v1/educacion/escuelas/16-03-0025-43/estudiantes"
+        "url": "http://api.mides.gob.gt/v1/educacion/escuelas/16-03-0025-43",
+        "departamento_url": "http://api.mides.gob.gt/v1/departamentos/16",
+        "municipio_url": "http://api.mides.gob.gt/v1/departamentos/16/municipios/3",
+        "estudiantes_url": "http://api.mides.gob.gt/v1/educacion/escuelas/16-03-0025-43/estudiantes"
     }
 }
 </pre>
@@ -395,10 +395,10 @@ Los posibles valores de <code>rel</code> son:
             "fecha_nacimiento": "2000-08-29T00:00:00.000-06:00",
             "genero": "M",
             "beneficio": "E",
-            "url": "http://localhost:3000/v1/educacion/estudiantes/24648274",
-            "escuela": "http://localhost:3000/v1/educacion/escuelas/16-03-0025-43",
-            "familia": "http://localhost:3000/v1/educacion/estudiantes/24648274/familia",
-            "asistencias": "http://localhost:3000/v1/educacion/estudiantes/24648274/asistencias"
+            "url": "http://api.mides.gob.gt/v1/educacion/estudiantes/24648274",
+            "escuela": "http://api.mides.gob.gt/v1/educacion/escuelas/16-03-0025-43",
+            "familia": "http://api.mides.gob.gt/v1/educacion/estudiantes/24648274/familia",
+            "asistencias": "http://api.mides.gob.gt/v1/educacion/estudiantes/24648274/asistencias"
         },
         {
             "id": 24648275,
@@ -409,10 +409,10 @@ Los posibles valores de <code>rel</code> son:
             "fecha_nacimiento": "2002-01-22T00:00:00.000-06:00",
             "genero": "M",
             "beneficio": "E",
-            "url": "http://localhost:3000/v1/educacion/estudiantes/24648275",
-            "escuela": "http://localhost:3000/v1/educacion/escuelas/16-03-0025-43",
-            "familia": "http://localhost:3000/v1/educacion/estudiantes/24648275/familia",
-            "asistencias": "http://localhost:3000/v1/educacion/estudiantes/24648275/asistencias"
+            "url": "http://api.mides.gob.gt/v1/educacion/estudiantes/24648275",
+            "escuela": "http://api.mides.gob.gt/v1/educacion/escuelas/16-03-0025-43",
+            "familia": "http://api.mides.gob.gt/v1/educacion/estudiantes/24648275/familia",
+            "asistencias": "http://api.mides.gob.gt/v1/educacion/estudiantes/24648275/asistencias"
         },
         ...
    ]
@@ -434,10 +434,10 @@ Los posibles valores de <code>rel</code> son:
         "fecha_nacimiento": "2000-08-29T00:00:00.000-06:00",
         "genero": "M",
         "beneficio": "E",
-        "url": "http://localhost:3000/v1/educacion/estudiantes/24648274",
-        "escuela": "http://localhost:3000/v1/educacion/escuelas/16-03-0025-43",
-        "familia": "http://localhost:3000/v1/educacion/estudiantes/24648274/familia",
-        "asistencias": "http://localhost:3000/v1/educacion/estudiantes/24648274/asistencias"
+        "url": "http://api.mides.gob.gt/v1/educacion/estudiantes/24648274",
+        "escuela": "http://api.mides.gob.gt/v1/educacion/escuelas/16-03-0025-43",
+        "familia": "http://api.mides.gob.gt/v1/educacion/estudiantes/24648274/familia",
+        "asistencias": "http://api.mides.gob.gt/v1/educacion/estudiantes/24648274/asistencias"
     }
 }
 </pre>
@@ -484,20 +484,20 @@ Los posibles valores de <code>rel</code> son:
             "titular": 24648210,
             "direccion": "QUIXALITO",
             "url": "http://localhost:3000/v1/educacion/familias/500040947",
-            "departamento_url": "http://localhost:3000/v1/departamentos/16",
-            "municipio_url": "http://localhost:3000/v1/departamentos/16/municipios/3",
-            "comunidad_url": "http://localhost:3000/v1/departamentos/16/municipios/3/comunidades/70",
-            "miembros_url": "http://localhost:3000/v1/educacion/estudiantes?familia_id=500040947"
+            "departamento_url": "http://api.mides.gob.gt/v1/departamentos/16",
+            "municipio_url": "http://api.mides.gob.gt/v1/departamentos/16/municipios/3",
+            "comunidad_url": "http://api.mides.gob.gt/v1/departamentos/16/municipios/3/comunidades/70",
+            "miembros_url": "http://api.mides.gob.gt/v1/educacion/estudiantes?familia_id=500040947"
         },
         {
             "id": "500040948",
             "titular": 24648216,
             "direccion": "SECTOR 1 A 50 MTS DE LA ESCUELA",
-            "url": "http://localhost:3000/v1/educacion/familias/500040948",
-            "departamento_url": "http://localhost:3000/v1/departamentos/16",
-            "municipio_url": "http://localhost:3000/v1/departamentos/16/municipios/3",
-            "comunidad_url": "http://localhost:3000/v1/departamentos/16/municipios/3/comunidades/70",
-            "miembros_url": "http://localhost:3000/v1/educacion/estudiantes?familia_id=500040948"
+            "url": "http://api.mides.gob.gt/v1/educacion/familias/500040948",
+            "departamento_url": "http://api.mides.gob.gt/v1/departamentos/16",
+            "municipio_url": "http://api.mides.gob.gt/v1/departamentos/16/municipios/3",
+            "comunidad_url": "http://api.mides.gob.gt/v1/departamentos/16/municipios/3/comunidades/70",
+            "miembros_url": "http://api.mides.gob.gt/v1/educacion/estudiantes?familia_id=500040948"
         },
         ...
     ]
@@ -515,10 +515,10 @@ Los posibles valores de <code>rel</code> son:
         "titular": 24648210,
         "direccion": "QUIXALITO",
         "url": "http://localhost:3000/v1/educacion/familias/500040947",
-        "departamento_url": "http://localhost:3000/v1/departamentos/16",
-        "municipio_url": "http://localhost:3000/v1/departamentos/16/municipios/3",
-        "comunidad_url": "http://localhost:3000/v1/departamentos/16/municipios/3/comunidades/70",
-        "miembros_url": "http://localhost:3000/v1/educacion/estudiantes?familia_id=500040947"
+        "departamento_url": "http://api.mides.gob.gt/v1/departamentos/16",
+        "municipio_url": "http://api.mides.gob.gt/v1/departamentos/16/municipios/3",
+        "comunidad_url": "http://api.mides.gob.gt/v1/departamentos/16/municipios/3/comunidades/70",
+        "miembros_url": "http://api.mides.gob.gt/v1/educacion/estudiantes?familia_id=500040947"
     }
 }
 </pre>
@@ -540,10 +540,10 @@ Los posibles valores de <code>rel</code> son:
             "fecha_nacimiento": "2000-08-29T00:00:00.000-06:00",
             "genero": "M",
             "beneficio": "E",
-            "url": "http://localhost:3000/v1/educacion/estudiantes/24648274",
-            "escuela": "http://localhost:3000/v1/educacion/escuelas/16-03-0025-43",
-            "familia": "http://localhost:3000/v1/educacion/estudiantes/24648274/familia",
-            "asistencias": "http://localhost:3000/v1/educacion/estudiantes/24648274/asistencias"
+            "url": "http://api.mides.gob.gt/v1/educacion/estudiantes/24648274",
+            "escuela": "http://api.mides.gob.gt/v1/educacion/escuelas/16-03-0025-43",
+            "familia": "http://api.mides.gob.gt/v1/educacion/estudiantes/24648274/familia",
+            "asistencias": "http://api.mides.gob.gt/v1/educacion/estudiantes/24648274/asistencias"
         },
         {
             "id": 24648275,
@@ -554,10 +554,10 @@ Los posibles valores de <code>rel</code> son:
             "fecha_nacimiento": "2002-01-22T00:00:00.000-06:00",
             "genero": "M",
             "beneficio": "E",
-            "url": "http://localhost:3000/v1/educacion/estudiantes/24648275",
-            "escuela": "http://localhost:3000/v1/educacion/escuelas/16-03-0025-43",
-            "familia": "http://localhost:3000/v1/educacion/estudiantes/24648275/familia",
-            "asistencias": "http://localhost:3000/v1/educacion/estudiantes/24648275/asistencias"
+            "url": "http://api.mides.gob.gt/v1/educacion/estudiantes/24648275",
+            "escuela": "http://api.mides.gob.gt/v1/educacion/escuelas/16-03-0025-43",
+            "familia": "http://api.mides.gob.gt/v1/educacion/estudiantes/24648275/familia",
+            "asistencias": "http://api.mides.gob.gt/v1/educacion/estudiantes/24648275/asistencias"
         },
         ...
     ]
