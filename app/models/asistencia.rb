@@ -2,7 +2,7 @@ require 'composite_primary_keys'
 
 class Asistencia < ActiveRecord::Base
   self.table_name = 'CUMPLIMIENTO_CORRES_EDUCACION'
-#  self.primary_keys = :HogCod, :MieCod, :Cod_UDI, :Fecha_Llenado
+  self.primary_keys = :HogCod, :MieCod, :Cod_UDI, :Fecha_Llenado
   
   alias_attribute :familia_id, :HogCod
   alias_attribute :miembro_id, :Miecod

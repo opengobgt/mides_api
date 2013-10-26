@@ -24,7 +24,7 @@ MidesApi::Application.routes.draw do
       
       resources :estudiantes, only: [:index, :show], defaults: {format: :json} do
         resource :familia, only: [:show], defaults: {format: :json}
-        resources :asistencias, only: [:index, :create], defaults: {format: :json}
+        resources :asistencias, only: [:index], defaults: {format: :json}
       end
       
       resources :familias, only: [:index, :show], defaults: {format: :json} do
@@ -34,13 +34,14 @@ MidesApi::Application.routes.draw do
 
     resource :sesion, :only => [:new, :create, :destroy]
     
+    resource :asistencias, :only => [:create]
   end
   
   
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
-  # Example of regular route:
+  # Example of regular route:1
   #   get 'products/:id' => 'catalog#view'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
