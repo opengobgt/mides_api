@@ -24,6 +24,9 @@ class Miembro < ActiveRecord::Base
     escuela.id
   end
 
+  def grado
+    asistencias.order(:Fecha_Llenado).last.grado rescue nil
+  end
 
 end
 

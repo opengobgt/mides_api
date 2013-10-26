@@ -1,5 +1,5 @@
 class EstudianteSerializer < ActiveModel::Serializer
-  attributes :id, :primer_nombre, :segundo_nombre, :primer_apellido, :segundo_apellido, :fecha_nacimiento, :genero, :beneficio, :url, :escuela, :familia, :asistencias
+  attributes :id, :primer_nombre, :segundo_nombre, :primer_apellido, :segundo_apellido, :fecha_nacimiento, :genero, :beneficio, :url, :escuela, :familia, :asistencias, :escuela_id, :familia_id, :grado
 
   def genero
     object.genero == 1 ? 'M' : 'F'
@@ -20,4 +20,5 @@ class EstudianteSerializer < ActiveModel::Serializer
   def asistencias
     estudiante_asistencias_url(object.id)
   end
+
 end
