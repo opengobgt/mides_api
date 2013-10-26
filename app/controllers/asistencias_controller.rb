@@ -25,7 +25,7 @@ class AsistenciasController < ApplicationController
     # ingresar 
 
     now = Time.zone.now
-    formated_now = now.strftime '%F %T'
+    formated_now = now.strftime '%F %T %z'
 
 
     asistencias = []
@@ -39,16 +39,13 @@ class AsistenciasController < ApplicationController
         Fecha_Llenado:    formated_now,
         Usuario:          usuario.id,
         Fecha_Digitacion: formated_now,
-        Anio:             Date.today.year
+        Anio:             now.year
       }
 
       asistencias << asistencia
     end
-
-    Asistencia.create!( asistencias )
-
-    @asistencias = Asistencia.where(COD_UDI: escuela.id, Grado: params[:grado], Usuario: usuario.id, Fecha_LLenado: formated_now)
     
+    @asistencias = Asistencia.create! asistencias
     render json: @asistencias, each_serializer: AsistenciaSerializer
 
   end
