@@ -32,7 +32,11 @@ MidesApi::Application.routes.draw do
       end
       
       resource :asistencias, only: [:create], defaults: {format: :json}
-      resource :estadisticas, only: [:index, :show], defaults: {format: :json}
+      
+      scope '/estadisticas' do
+        get 'resumen' => 'estadisticas#show', defaults: {format: :json}, as: :estadisticas_resumen
+        get 'estudiante/:id' => 'estadisticas_estudiante#show', defaults: {format: :json}, as: :estadisticas_estudiante
+      end
     end
 
     resource :sesion, only: [:new, :create, :destroy], defaults: {format: :json}
